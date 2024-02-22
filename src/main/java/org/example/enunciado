@@ -1,0 +1,16 @@
+Make the chess game with the following basic specifications:
+
+DONE Use abstract classes and methods for simulate the behaviour of chess pieces (heritage and polymorphism).
+DONE Use you own List with generic types to implement the deleted piece storage that shows the pieces deleted.
+DONE Use a Map to represent the chess board.
+TODO Control user input data
+DONE Use enum types for the color and shape of the chess pieces.
+DONE Highlight cells with the following possible movements.
+TODO The game ends when a player kill the king
+TODO Use the MVC design pattern.
+
+
+
+Vaina de inputs
+- Pedir coordenada
+- Validar colores
