@@ -46,13 +46,13 @@ public class Board {
 
         /*Queen*/
 
-        Piece whiteQueen = new Queen(this,new Coordinate('D',1), Queen.Type.WHITE);
-        Piece darkQueen = new Queen(this,new Coordinate('D',8), Queen.Type.BLACK);
+        Piece whiteQueen = new Queen(this,new Coordinate('E',1), Queen.Type.WHITE);
+        Piece darkQueen = new Queen(this,new Coordinate('E',8), Queen.Type.BLACK);
 
         /*King*/
 
-        Piece whiteKing = new King(this,new Coordinate('E',1), King.Type.WHITE);
-        Piece darkKing = new King(this,new Coordinate('E',8), King.Type.BLACK);
+        Piece whiteKing = new King(this,new Coordinate('D',1), King.Type.WHITE);
+        Piece darkKing = new King(this,new Coordinate('D',8), King.Type.BLACK);
 
         /*Pawns white and black*/
         for(int i=0; i<8;i++ ){
