@@ -9,6 +9,8 @@ public class DeletePieceManager {
     private List<Piece.Type> pieces;
     private Map<Piece.Type,Integer> deletedPieces;
     private Map<Piece.Type,Integer> remainingPieces;
+    private Map<Piece.Type,Integer> totalPieces;
+
 
     private Board board;
 
@@ -17,8 +19,10 @@ public class DeletePieceManager {
         this.board = board;
         deletedPieces = new HashMap<>();
         remainingPieces = new HashMap<>();
+        totalPieces = new HashMap<>();
         initDeleted();
         initRemaining();
+        initTotalPieces();
 
     }
 
@@ -43,14 +47,28 @@ public class DeletePieceManager {
 
     }
 
+    public void initTotalPieces(){
+
+        for(Piece.Type piece : pieces){
+            totalPieces.put(piece,0);
+        }
+
+        for(Cell cell : board.getCells().values()){
+
+            if(!(cell.isEmpty())){
+                totalPieces.put(cell.getPiece().getType(),totalPieces.get(cell.getPiece().getType())+1);
+            }
+        }
+
+    }
+
     public void refreshRemaining(){
 
-        HashMap<Piece.Type,Integer> aux = new HashMap<>(remainingPieces);
         remainingPieces=new HashMap<>();
         initRemaining();
         for(Piece.Type piece : pieces){
-           if( aux.get(piece) != remainingPieces.get(piece) ){
-               deletedPieces.put(piece,       aux.get(piece)-remainingPieces.get(piece)              );
+           if( totalPieces.get(piece) != remainingPieces.get(piece) ){
+               deletedPieces.put(piece,totalPieces.get(piece)-remainingPieces.get(piece)              );
            }
         }
     }
