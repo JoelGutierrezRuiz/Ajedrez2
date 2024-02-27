@@ -7,8 +7,10 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class Rook extends Piece {
+    private boolean moved;
     public Rook(Board board, Coordinate position, Type type) {
         super(type.getType(), board.getCellAt(position));
+        moved = false;
     }
 
     //put your task here
@@ -38,8 +40,10 @@ public class Rook extends Piece {
 
         // Diagonal  der
         c = posicion;
+
         do {
             c = c.right();
+
             if (piece.canAddToNextMovements(c))
                 nextMovements.add(c);
         } while (board.contains(c) && board.getCellAt(c).getPiece() == null);
@@ -62,6 +66,8 @@ public class Rook extends Piece {
 
         return nextMovements;
     }
+
+
 
     public enum Type {
         BLACK(Piece.Type.BLACK_ROOK), WHITE(Piece.Type.WHITE_ROOK);

@@ -1,4 +1,4 @@
-package org.example;
+package org.example.Tools;
 
 import org.example.Game.Board;
 import org.example.Game.Cell;
@@ -17,12 +17,10 @@ public class Tool {
             System.out.println("Invalid position");
         }
         return true;
-
     }
 
     public static Piece getPiece (Board board, Piece.Color color) throws Exception {
 
-        boolean correcto = false;
         do{
             try{
                 Coordinate coordinate = getCoordinate();
@@ -44,11 +42,10 @@ public class Tool {
             catch (Exception e){
                 System.out.println(e.getMessage());
             }
-        }while (!correcto);
-        return null;
+        }while (true);
     }
+
     public static Coordinate getCoordinate(){
-        boolean correcto = false;
         do{
             try{
                 System.out.print("Escribe la coordenada: ");
@@ -69,12 +66,24 @@ public class Tool {
             catch (Exception e){
                 System.out.println(e.getMessage());
             }
-        }while (!correcto);
-        return null;
+        }while (true);
+    }
+
+    public static String getName(String color){
+        do {
+            try {
+                String name = "";
+                Scanner sc = new Scanner(System.in);
+                System.out.print("Player " + color.toLowerCase() + " name: ");
+                name = sc.nextLine();
+                return name;
+            } catch (Exception e) {
+                System.out.print("Write a valid name!");
+            }
+        }while (true);
     }
 
     public static Piece.Color changeTurn(Piece.Color color){
-
         return color.equals(Piece.Color.BLACK)?Piece.Color.WHITE:Piece.Color.BLACK;
 
     }

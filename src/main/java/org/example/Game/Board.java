@@ -22,11 +22,11 @@ public class Board {
         }
 
         /*Knights*/
-        Piece whiteKnight1 = new Knight(this,new Coordinate('B',1), Knight.Type.WHITE);
-        Piece whiteKnight2 = new Knight(this,new Coordinate('G',1), Knight.Type.WHITE);
+        //Piece whiteKnight1 = new Knight(this,new Coordinate('B',1), Knight.Type.WHITE);
+        //Piece whiteKnight2 = new Knight(this,new Coordinate('G',1), Knight.Type.WHITE);
 
-        Piece darkKnight1 = new Knight(this,new Coordinate('B',8), Knight.Type.BLACK);
-        Piece darkKnight2 = new Knight(this,new Coordinate('G',8), Knight.Type.BLACK);
+        //Piece darkKnight1 = new Knight(this,new Coordinate('B',8), Knight.Type.BLACK);
+        //Piece darkKnight2 = new Knight(this,new Coordinate('G',8), Knight.Type.BLACK);
 
         /*Rooks*/
 
@@ -38,16 +38,16 @@ public class Board {
 
         /*Bishops*/
 
-        Piece whiteBishop1 = new Bishop(this,new Coordinate('C',1), Bishop.Type.WHITE);
-        Piece whiteBishop2 = new Bishop(this,new Coordinate('F',1), Bishop.Type.WHITE);
+        //Piece whiteBishop1 = new Bishop(this,new Coordinate('C',1), Bishop.Type.WHITE);
+        //Piece whiteBishop2 = new Bishop(this,new Coordinate('F',1), Bishop.Type.WHITE);
 
-        Piece darkBishop1 = new Bishop(this,new Coordinate('C',8), Bishop.Type.BLACK);
-        Piece darkBishop2 = new Bishop(this,new Coordinate('F',8), Bishop.Type.BLACK);
+        //Piece darkBishop1 = new Bishop(this,new Coordinate('C',8), Bishop.Type.BLACK);
+        //Piece darkBishop2 = new Bishop(this,new Coordinate('F',8), Bishop.Type.BLACK);
 
         /*Queen*/
 
-        Piece whiteQueen = new Queen(this,new Coordinate('E',1), Queen.Type.WHITE);
-        Piece darkQueen = new Queen(this,new Coordinate('E',8), Queen.Type.BLACK);
+        //Piece whiteQueen = new Queen(this,new Coordinate('E',1), Queen.Type.WHITE);
+       // Piece darkQueen = new Queen(this,new Coordinate('E',8), Queen.Type.BLACK);
 
         /*King*/
 

@@ -18,11 +18,10 @@ public class DeletePieceManager {
         pieces = Arrays.asList(Piece.Type.values());
         this.board = board;
         deletedPieces = new HashMap<>();
-        remainingPieces = new HashMap<>();
         totalPieces = new HashMap<>();
         initDeleted();
-        initRemaining();
         initTotalPieces();
+        remainingPieces = new HashMap<>(totalPieces);
 
     }
 
@@ -31,20 +30,6 @@ public class DeletePieceManager {
         for(Piece.Type piece : pieces){
             deletedPieces.put( piece,0);
         }
-    }
-    public void initRemaining(){
-
-        for(Piece.Type piece : pieces){
-            remainingPieces.put(piece,0);
-        }
-
-        for(Cell cell : board.getCells().values()){
-
-            if(!(cell.isEmpty())){
-                remainingPieces.put(cell.getPiece().getType(),remainingPieces.get(cell.getPiece().getType())+1);
-            }
-        }
-
     }
 
     public void initTotalPieces(){
@@ -62,36 +47,51 @@ public class DeletePieceManager {
 
     }
 
+    public int findPiece(Piece.Type type){
+        int total = 0;
+        for(Cell cell : board.getCells().values()) {
+
+            if (!(cell.isEmpty()) && cell.getPiece().getType().equals(type) ) {
+                total++;
+            }
+
+
+        }
+        return total;
+    }
+
     public void refreshRemaining(){
 
-        remainingPieces=new HashMap<>();
-        initRemaining();
         for(Piece.Type piece : pieces){
-           if( totalPieces.get(piece) != remainingPieces.get(piece) ){
+
+            remainingPieces.put(piece, findPiece(piece));
+
+           if( totalPieces.get(piece) > remainingPieces.get(piece) ){
                deletedPieces.put(piece,totalPieces.get(piece)-remainingPieces.get(piece)              );
            }
+
         }
     }
 
     public void print(){
-        System.out.println("          REMAINING PIECES");
+        System.out.println("\t\t\t\tREMAINING PIECES");
         printRemaining();
         System.out.println();
-        System.out.println("          DELETED PIECES");
+        System.out.println("\t\t\t\tDELETED PIECES");
         printDeleted();
 
     }
 
     public void printDeleted(){
 
-        String celda = "";
+        String celda = "\t";
         for(Piece.Type piece : pieces){
             celda+= colorize(" ",Cell.Color.BLACK.getAttribute());
             celda+= colorize(piece.getShape(), piece.getColor().getAttribute(), Cell.Color.BLACK.getAttribute());
             celda+= colorize(" ",Cell.Color.BLACK.getAttribute());
 
         }
-        celda+="\n";
+        celda+="\n\t";
 
         for(Piece.Type piece : pieces){
             celda+= colorize(" ",Cell.Color.WHITE.getAttribute());
@@ -104,14 +104,14 @@ public class DeletePieceManager {
 
     public void printRemaining(){
 
-        String celda = "";
+        String celda = "\t";
         for(Piece.Type piece : pieces){
             celda+= colorize(" ",Cell.Color.BLACK.getAttribute());
             celda+= colorize(piece.getShape(), piece.getColor().getAttribute(), Cell.Color.BLACK.getAttribute());
             celda+= colorize(" ",Cell.Color.BLACK.getAttribute());
 
         }
-        celda+="\n";
+        celda+="\n\t";
 
         for(Piece.Type piece : pieces){
             celda+= colorize(" ",Cell.Color.WHITE.getAttribute());

@@ -1,45 +1,33 @@
 package org.example.Game;
 
-import org.example.Pieces.*;
+import org.example.Pieces.King;
+import org.example.Pieces.Piece;
 import org.example.Tools.Tool;
 
-public class Game {
+import java.util.HashSet;
+import java.util.Set;
 
+public class PruebaEnroque {
 
     public static void main(String[] args) throws Exception {
-
         Board board = new Board();
-        WhitePlayer whitePlayer = new WhitePlayer();
-        BlackPlayer blackPlayer =  new BlackPlayer();
         Piece.Color turnColor = Piece.Color.WHITE;
-        DeletePieceManager pieceManager  = new DeletePieceManager(board);
-
-
+        board.print();
 
         do{
             /**/
-
-            board.print();
-            pieceManager.print();
 
             Piece pieceTurn = Tool.getPiece(board,turnColor);
 
             board.highLight(pieceTurn.getNextMovements());
             board.print();
-            pieceManager.print();
-
             board.removeHighLight(pieceTurn.getNextMovements());
             Tool.move(pieceTurn);
-
             board.print();
-            pieceManager.print();
-            pieceManager.refreshRemaining();
             turnColor = Tool.changeTurn(turnColor);
 
 
         }while (true);
-
-
 
     }
 

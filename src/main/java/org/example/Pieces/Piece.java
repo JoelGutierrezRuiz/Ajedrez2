@@ -4,10 +4,8 @@ import com.diogonunes.jcolor.Attribute;
 import org.example.Game.Board;
 import org.example.Game.Cell;
 import org.example.Game.Coordinate;
-import org.example.Tool;
 
 import java.util.Set;
-import java.util.concurrent.atomic.AtomicLong;
 
 import static com.diogonunes.jcolor.Ansi.colorize;
 
@@ -16,15 +14,20 @@ public abstract class Piece {
     private Type type;
     private Cell cell;
 
+    private boolean moved;
+
     public Piece(Type type, Cell cell) {
         this.type = type;
         this.cell = cell;
         place();
+        moved=false;
     }
 
     protected void place() {
-        if (cell != null)
+        if (cell != null) {
             cell.setPiece(this);
+
+        }
     }
 
     protected boolean canAddToNextMovements(Coordinate c) {
@@ -64,11 +67,21 @@ public abstract class Piece {
 
         place();
 
+        this.setMoved(true);
+
         return true;
     }
 
     public void setCell(Cell cell) {
         this.cell = cell;
+    }
+
+    public void setMoved(boolean moved) {
+        this.moved = moved;
+    }
+
+    public boolean isMoved() {
+        return moved;
     }
 
     public Type getType() {
