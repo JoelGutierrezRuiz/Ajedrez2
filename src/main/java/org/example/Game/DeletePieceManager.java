@@ -50,12 +50,9 @@ public class DeletePieceManager {
     public int findPiece(Piece.Type type){
         int total = 0;
         for(Cell cell : board.getCells().values()) {
-
             if (!(cell.isEmpty()) && cell.getPiece().getType().equals(type) ) {
                 total++;
             }
-
-
         }
         return total;
     }

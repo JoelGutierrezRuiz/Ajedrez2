@@ -55,12 +55,12 @@ public class Board {
         Piece darkKing = new King(this,new Coordinate('D',8), King.Type.BLACK);
 
         /*Pawns white and black*/
-        for(int i=0; i<8;i++ ){
-            Piece peon = new Pawn(this,new Coordinate((char)('A'+i),2) ,Pawn.Type.WHITE );
-        }
-        for(int i=0; i<8;i++ ){
-            Piece peon = new Pawn(this,new Coordinate((char)('A'+i),7) ,Pawn.Type.BLACK );
-        }
+//        for(int i=0; i<8;i++ ){
+//            Piece peon = new Pawn(this,new Coordinate((char)('A'+i),2) ,Pawn.Type.WHITE );
+//        }
+//        for(int i=0; i<8;i++ ){
+//            Piece peon = new Pawn(this,new Coordinate((char)('A'+i),7) ,Pawn.Type.BLACK );
+//        }
     }
     public boolean contains(Coordinate c) {
         return cells.containsKey(c);

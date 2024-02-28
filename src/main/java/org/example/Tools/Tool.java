@@ -3,9 +3,9 @@ package org.example.Tools;
 import org.example.Game.Board;
 import org.example.Game.Cell;
 import org.example.Game.Coordinate;
+import org.example.Game.Player;
 import org.example.Pieces.Piece;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Tool {
@@ -19,7 +19,7 @@ public class Tool {
         return true;
     }
 
-    public static Piece getPiece (Board board, Piece.Color color) throws Exception {
+    public static Piece getPiece (Board board, Player player) throws Exception {
 
         do{
             try{
@@ -32,8 +32,8 @@ public class Tool {
                 else if(piece.getNextMovements().isEmpty()){
                     throw new Exception("This piece cant move anywhere");
                 }
-                else if(!(piece.getColor().equals(color))){
-                    throw new Exception("Turn for "+ color.toString().toLowerCase() );
+                else if(!(piece.getColor().equals(player.getColor()))){
+                    throw new Exception("Turn for "+ player.getColor().toString().toLowerCase()+": "+player.getName() );
                 }
                 else{
                     return board.getCellAt(coordinate).getPiece();
@@ -48,18 +48,19 @@ public class Tool {
     public static Coordinate getCoordinate(){
         do{
             try{
-                System.out.print("Escribe la coordenada: ");
+                System.out.print("Write the position: ");
                 Scanner sc =  new Scanner(System.in);
                 String coordenada = sc.nextLine().toLowerCase();
                 if(coordenada.length() != 2){
-                    throw new Exception("Introduce una coordenada válida");
+                    throw new Exception("Introduce a valid position.");
                 }
                 if(coordenada.charAt(0) < 'a' || coordenada.charAt(0)>'h'){
-                    throw new Exception ("Introduce una coordenada válida");
+                    throw new Exception ("Introduce a valid position.");
                 }
                 if(coordenada.charAt(1) < '1' || coordenada.charAt(1) > '8'){
-                    throw new Exception ("Introduce una coordenada válida");
+                    throw new Exception ("Introduce a valid position.");
                 }
+
                 return new Coordinate(coordenada.charAt(0),Integer.parseInt(coordenada.substring(1)));
 
             }
@@ -87,6 +88,14 @@ public class Tool {
         return color.equals(Piece.Color.BLACK)?Piece.Color.WHITE:Piece.Color.BLACK;
 
     }
+
+
+    public static void turnMessage(Player player){
+
+        System.out.println(player.getName()+" is your turn. Move a "+player.getColor().toString().toLowerCase()+" piece.");
+
+    }
+
 
 
 }
